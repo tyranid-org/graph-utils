@@ -2,7 +2,8 @@
   "name": "graphutil",
   "version": "0.0.1",
   "description": "Simple graph algorithms implemented in typescript and compiled to es5",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "start": "npm run build && node ./dist/test/example/server.js",
     "build": "rm -rf ./dist/ && npm run lint && npm run tsc && npm run tsc-test",

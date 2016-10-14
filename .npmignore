@@ -1,4 +1,5 @@
 dist/test
+dist/src
 node_modules
 test
 coverage
