@@ -1,0 +1,36 @@
+{
+  "name": "graph-utils",
+  "version": "0.0.1",
+  "description": "Simple graph algorithms implemented in typescript and compiled to es5",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node ./dist/test/example/server.js",
+    "build": "rm -rf ./dist/ && npm run lint && npm run tsc && npm run tsc-test",
+    "pretest": "npm run build",
+    "prepublish": "npm run test",
+    "test": "nyc ava",
+    "tsc": "tsc -d",
+    "tsc-test": "cd ./test/ && tsc -d",
+    "lint": "tslint -c ./tslint.json ./{test,lib}/**/*.ts && echo '> \\033[0;32mlinter passed!\\033[0m'",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+  },
+  "author": "bsouthga@gmail.com",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "codecov": "^1.0.1",
+    "nyc": "^8.3.1",
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.3"
+  },
+  "ava": {
+    "files": [
+      "dist/test/index.js"
+    ]
+  },
+  "nyc": {
+    "include": [
+      "dist/src"
+    ]
+  }
+}
