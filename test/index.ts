@@ -1,7 +1,7 @@
 import test from 'ava';
 import {
   articulationPoints,
-  betweennessCentralityUnweighted,
+  betweennessCentrality,
   invertGraph,
   cyclic,
   neighbors
@@ -57,7 +57,7 @@ test('Should find articulation points', t => {
 
 
 test('Should compute correct centrality values', t => {
-  const centrality = betweennessCentralityUnweighted(exampleCyclicGraph);
+  const centrality = betweennessCentrality(exampleCyclicGraph);
   const values = Object.keys(centrality).map(k => centrality[k]);
   t.is(Math.max(...values), centrality['B'], 'B should have max centrality');
 });

@@ -7,7 +7,7 @@ import {neighbors} from './neighbors';
  *
  * http://algo.uni-konstanz.de/publications/b-fabc-01.pdf (page 10)
  */
-export function betweennessCentralityUnweighted(
+export function betweennessCentrality(
   adjacencyList: AdjacencyList
 ): { [nodeId: string]: number } {
   const nodes = Object.keys(adjacencyList || {});
