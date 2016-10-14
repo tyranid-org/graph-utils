@@ -1,5 +1,5 @@
 {
-  "name": "graph-utils",
+  "name": "graphutil",
   "version": "0.0.1",
   "description": "Simple graph algorithms implemented in typescript and compiled to es5",
   "main": "index.js",
