@@ -12,6 +12,15 @@ export interface AdjacencyList {
 }
 ```
 
+## Algorithms implemented
+
+- [articulation points](https://github.com/tyranid-org/graphutil/blob/master/src/algorithms/articulationPoints.ts)
+- [betweeness centrality](https://github.com/tyranid-org/graphutil/blob/master/src/algorithms/betweenessCentrality.ts)
+- [cycle detection](https://github.com/tyranid-org/graphutil/blob/master/src/algorithms/cyclic.ts)
+- [graph inversion](https://github.com/tyranid-org/graphutil/blob/master/src/algorithms/invert.ts)
+- [strongly connected components](https://github.com/tyranid-org/graphutil/blob/master/src/algorithms/stronglyConnectedComponents.ts)
+- [topological sort](https://github.com/tyranid-org/graphutil/blob/master/src/algorithms/topologicalSort.ts)
+
 ## Installation
 
 ```bash
