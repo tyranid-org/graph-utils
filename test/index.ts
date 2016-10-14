@@ -4,10 +4,9 @@ import {
   betweennessCentrality,
   invertGraph,
   cyclic,
-  neighbors
+  neighbors,
+  topologicalSort
 } from '../src';
-
-
 
 /*
   Graph with two components and one articulation point
@@ -76,4 +75,13 @@ test('Should successfully invert graph', t => {
 test('Should find cycles', t => {
   t.true(cyclic(exampleCyclicGraph), 'has cycle');
   t.false(cyclic(exampleAcyclicGraph), 'no cycle');
+});
+
+test('Should produce valid toposort', t => {
+  const sorted = topologicalSort(exampleAcyclicGraph);
+  t.deepEqual(sorted, [ 'A', 'C', 'G', 'F', 'B', 'E', 'D' ], 'check against valid ordering');
+});
+
+test('Should throw when topologically sorting cyclic graph', t => {
+  t.throws(() => topologicalSort(exampleCyclicGraph));
 });

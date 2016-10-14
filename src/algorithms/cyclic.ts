@@ -1,5 +1,5 @@
 import {AdjacencyList} from '../interfaces/AdjacencyList';
-import {topologicalSort} from './topologicalSort';
+import {stronglyConnectedComponents} from './stronglyConnectedComponents';
 
 /**
  * Return boolean indicating if a graph has cycles
@@ -7,11 +7,8 @@ import {topologicalSort} from './topologicalSort';
 export function cyclic(
   adjacencyList: AdjacencyList
 ): boolean {
-  try {
-    topologicalSort(adjacencyList);
-  } catch (err) {
-    if (/adjacencyList contains cycles/.test(err.message)) return true;
-    throw err;
-  }
-  return false;
+  return (
+    stronglyConnectedComponents(adjacencyList).length !==
+    Object.keys(adjacencyList).length
+  );
 }
