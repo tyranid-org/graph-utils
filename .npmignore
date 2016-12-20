@@ -1,6 +1,5 @@
-dist/test
-dist/src
 node_modules
 test
 coverage
 .nyc_output
+yarn.lock
