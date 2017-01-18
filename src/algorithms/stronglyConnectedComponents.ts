@@ -4,10 +4,10 @@ import {neighbors} from './neighbors';
 
 interface NodeProps {
   [key: string]: {
-    index?: number,
-    lowlink?: number,
-    onStack?: boolean
-  }
+    index?: number;
+    lowlink?: number;
+    onStack?: boolean;
+  } | void;
 }
 
 
@@ -36,6 +36,8 @@ export function stronglyConnectedComponents(
   function strongConnect(node: string) {
     const props = nodeProps[node];
 
+    if (!props) throw new Error(`No node properties found for node = ${node}`);
+
     props.index = depthIndex;
     props.lowlink = depthIndex;
     props.onStack = true;
@@ -50,11 +52,15 @@ export function stronglyConnectedComponents(
       const neighbor = neighborNodes[i];
       const neighborProps = nodeProps[neighbor];
 
-      if (!(neighborProps.index >= 0)) {
+      if (!neighborProps) throw new Error(`No node properties found for node = ${neighbor}`);
+
+      const neighborIndex = neighborProps.index;
+
+      if (!(neighborIndex >= 0)) {
         strongConnect(neighbor);
-        props.lowlink = min(props.lowlink as number, neighborProps.index as number);
+        props.lowlink = min(props.lowlink, neighborIndex || Infinity);
       } else if (neighborProps.onStack) {
-        props.lowlink = min(props.lowlink as number, neighborProps.index as number);
+        props.lowlink = min(props.lowlink, neighborIndex || Infinity);
       }
     }
 
