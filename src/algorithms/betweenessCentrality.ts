@@ -1,6 +1,10 @@
 import {AdjacencyList} from '../interfaces/AdjacencyList';
 import {neighbors} from './neighbors';
 
+
+declare var console: any;
+
+
 /**
  * Compute betweenness centrality values for unweighted graph,
  * using Brandes fast algorithm:
@@ -11,6 +15,11 @@ export function betweennessCentrality(
   adjacencyList: AdjacencyList
 ): { [nodeId: string]: number } {
   const nodes = Object.keys(adjacencyList || {});
+
+  nodes.sort((a, b) => {
+    return adjacencyList[b].length - adjacencyList[a].length;
+  });
+
   const indexMap = nodes.reduce((o, n, i) => (o[n] = i, o), {} as {[key: string]: number});
   const zeros = nodes.map(() => 0);
   const negativeOnes = zeros.map(() => -1);
