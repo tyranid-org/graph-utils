@@ -2,9 +2,6 @@ import {AdjacencyList} from '../interfaces/AdjacencyList';
 import {neighbors} from './neighbors';
 
 
-declare var console: any;
-
-
 /**
  * Compute betweenness centrality values for unweighted graph,
  * using Brandes fast algorithm:
